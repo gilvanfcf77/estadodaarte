@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table } from 'reactstrap';
-import { Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink } from 'reactstrap';
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
@@ -13,8 +12,8 @@ const creds = require('./client_secret.json');
 // spreadsheet key is the long id in the sheets URL
 const doc = new GoogleSpreadsheet('1Efe8VpmvHhnTunxeq2A6LdE1jk8kDCELnSIhWA4rTAY');
 
-const tableBody = document.getElementById('tableData');
-let dataHtml = '';
+//const tableBody = document.getElementById('tableData');
+//let dataHtml = '';
 let sheet = '';
 let rows = '';
 let sortDirection = false;
@@ -84,6 +83,8 @@ function sortColumn(columnName) {
     case 'string':
       sortTextColumn(sortDirection, columnName);
       break;
+    default:
+      console.log("sort");
   }
   loadTableData(worksData);
 }
@@ -108,7 +109,7 @@ function search() {
 
   if (document.getElementById('option1').checked) {
     for (var i = 0; i < worksData.length; i++) {
-      if (worksData[i].author.search(term) != -1) {
+      if (worksData[i].author.search(term) !== -1) {
         worksDataSearch.push({
           author: worksData[i].author,
           title: worksData[i].title,
@@ -127,8 +128,8 @@ function search() {
     worksDataSearch = [];
 
   }else if (document.getElementById('option2').checked) {
-    for (var i = 0; i < worksData.length; i++) {
-      if (worksData[i].title.search(term) != -1) {
+    for (i = 0; i < worksData.length; i++) {
+      if (worksData[i].title.search(term) !== -1) {
         worksDataSearch.push({
           author: worksData[i].author,
           title: worksData[i].title,
@@ -154,10 +155,6 @@ function search() {
 }
 
 function App() {
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggle = () => setDropdownOpen(!dropdownOpen);
 
   return (
     <div>
