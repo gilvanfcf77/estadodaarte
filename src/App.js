@@ -7,6 +7,14 @@ import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
+// A chave da conta de serviço foi removida do repositório porque ficou exposta e foi revogada.
+// O app não compila enquanto src/client_secret.json não existir. Para voltar a funcionar:
+// 1. No Google Cloud, ative a Google Sheets API no projeto e reative a conta de serviço ou crie outra.
+// 2. Gere uma nova chave em JSON para essa conta e salve como src/client_secret.json.
+//    Esse caminho está no .gitignore: nunca faça commit desse arquivo.
+// 3. Compartilhe a planilha usada abaixo com o e-mail da conta de serviço (client_email), como leitor.
+// 4. Rode apenas localmente. O JSON é empacotado no JavaScript do navegador, então quem abrir um site
+//    publicado consegue copiar a chave. Para publicar, leia a planilha em um backend e envie só os dados.
 const creds = require('./client_secret.json');
 
 // spreadsheet key is the long id in the sheets URL

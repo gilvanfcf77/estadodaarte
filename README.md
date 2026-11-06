@@ -28,4 +28,6 @@ npm install
 npm start
 ```
 
-Update the service account credentials and the spreadsheet ID used in `src/App.js`, then open http://localhost:3000.
+Save a new service account key as `src/client_secret.json`, which Git ignores, and update the spreadsheet ID in `src/App.js`. The app does not compile without that file, and the comments in `src/App.js` list the full steps. Then open http://localhost:3000.
+
+Run this project locally only, because the build includes the key in the browser code. A public deployment would need a backend to read the spreadsheet.
